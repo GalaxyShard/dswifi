@@ -59,12 +59,12 @@ extern "C" {
 
 // keep in sync with wifi_arm9.h
 #ifndef WIRELESS_DEFINES
-enum WIRELESS_MODE {
-    WIRELESS_MODE_WIFI,
-    WIRELESS_MODE_NIFI,
+enum WIFI_PACKET_MODE {
+    PACKET_MODE_WIFI,
+    PACKET_MODE_NIFI,
 };
-extern enum WIRELESS_MODE wirelessMode;
-extern void setWirelessMode(enum WIRELESS_MODE mode);
+extern enum WIFI_PACKET_MODE wirelessMode;
+extern void Wifi_SetRawPacketMode(enum WIFI_PACKET_MODE mode);
 #define WIRELESS_DEFINES
 #endif
 
