@@ -26,6 +26,18 @@ extern "C" {
 
 extern volatile Wifi_MainStruct *WifiData;
 
+// keep in sync with dswifi9.h
+#ifndef WIRELESS_DEFINES
+enum WIFI_PACKET_MODE {
+    PACKET_MODE_WIFI,
+    PACKET_MODE_NIFI,
+};
+extern enum WIFI_PACKET_MODE wirelessMode;
+extern void Wifi_SetRawPacketMode(enum WIFI_PACKET_MODE mode);
+#define WIRELESS_DEFINES
+#endif
+
+
 enum WIFIGETDATA
 {
     WIFIGETDATA_MACADDRESS, // MACADDRESS: returns data in the buffer, requires at least 6 bytes
