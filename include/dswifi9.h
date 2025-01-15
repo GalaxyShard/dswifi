@@ -57,6 +57,18 @@ extern "C" {
 #define WFLAG_APDATA_SHORTPREAMBLE 0x0020
 #define WFLAG_APDATA_ACTIVE        0x8000
 
+// keep in sync with wifi_arm9.h
+#ifndef WIRELESS_DEFINES
+enum WIRELESS_MODE {
+    WIRELESS_MODE_WIFI,
+    WIRELESS_MODE_NIFI,
+};
+extern enum WIRELESS_MODE wirelessMode;
+extern void setWirelessMode(enum WIRELESS_MODE mode);
+#define WIRELESS_DEFINES
+#endif
+
+
 /// Error codes for Wifi_GetAPData()
 enum WIFI_RETURN
 {
