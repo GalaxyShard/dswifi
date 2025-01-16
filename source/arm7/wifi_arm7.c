@@ -131,10 +131,10 @@ void GetWfcSettings(void)
             s = 0;
             for (n = 0; n < data[0xD0]; n++)
             {
-                s |= 1 << (31 - n);
+                s |= 1u << (31u - (unsigned long)n);
             }
 
-            s = (s << 24) | (s >> 24) | ((s & 0xFF00) << 8) | ((s & 0xFF0000) >> 8); // htonl
+            s = (s << 24u) | (s >> 24u) | ((s & 0xFF00u) << 8u) | ((s & 0xFF0000u) >> 8u); // htonl
             WifiData->wfc_config[c][2] = s;
             c++;
         }
@@ -897,7 +897,7 @@ void Wifi_Update(void)
     if (!WifiData)
         return;
 
-    WifiData->random ^= (W_RANDOM ^ (W_RANDOM << 11) ^ (W_RANDOM << 22));
+    WifiData->random ^= (W_RANDOM ^ (W_RANDOM << 11u) ^ (W_RANDOM << 22u));
     WifiData->stats[WSTAT_ARM7_UPDATES]++;
 
     // check flags, to see if we need to change anything
