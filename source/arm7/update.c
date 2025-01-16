@@ -57,7 +57,7 @@ void Wifi_Update(void)
     if (!WifiData)
         return;
 
-    WifiData->random ^= (W_RANDOM ^ (W_RANDOM << 11) ^ (W_RANDOM << 22));
+    WifiData->random ^= (W_RANDOM ^ (W_RANDOM << 11u) ^ (W_RANDOM << 22u));
     WifiData->stats[WSTAT_ARM7_UPDATES]++;
 
     // check flags, to see if we need to change anything

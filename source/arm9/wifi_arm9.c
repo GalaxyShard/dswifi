@@ -860,7 +860,7 @@ int Wifi_TransmitFunction(sgIP_Hub_HWInterface *hw, sgIP_memblock *mb)
 int Wifi_Interface_Init(sgIP_Hub_HWInterface *hw)
 {
     hw->MTU       = 2300;
-    hw->ipaddr    = (192) | (168 << 8) | (1 << 16) | (151 << 24);
+    hw->ipaddr    = (192) | (168 << 8) | (1 << 16) | (151u << 24);
     hw->snmask    = 0x00FFFFFF;
     hw->gateway   = (192) | (168 << 8) | (1 << 16) | (1 << 24);
     hw->dns[0]    = (192) | (168 << 8) | (1 << 16) | (1 << 24);

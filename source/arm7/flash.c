@@ -109,9 +109,9 @@ void Wifi_GetWfcSettings(volatile Wifi_MainStruct *WifiData)
 
             unsigned long s = 0;
             for (n = 0; n < data[0xD0]; n++)
-                s |= 1 << (31 - n);
+                s |= 1u << (31u - (unsigned long)n);
 
-            s = (s << 24) | (s >> 24) | ((s & 0xFF00) << 8) | ((s & 0xFF0000) >> 8); // htonl
+            s = (s << 24u) | (s >> 24u) | ((s & 0xFF00u) << 8u) | ((s & 0xFF0000u) >> 8u); // htonl
             WifiData->wfc_config[c][2] = s;
 
             c++;
