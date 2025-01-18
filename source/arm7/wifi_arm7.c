@@ -897,7 +897,9 @@ void Wifi_Update(void)
     if (!WifiData)
         return;
 
-    WifiData->random ^= (W_RANDOM ^ (W_RANDOM << 11u) ^ (W_RANDOM << 22u));
+    WifiData->random ^= (
+        (u32)W_RANDOM ^ ((u32)W_RANDOM << 11u) ^ ((u32)W_RANDOM << 22u)
+    );
     WifiData->stats[WSTAT_ARM7_UPDATES]++;
 
     // check flags, to see if we need to change anything
@@ -1142,7 +1144,7 @@ void Wifi_Init(u32 wifidata)
     WifiData->reqChannel     = 1;
     WifiData->curMode        = WIFIMODE_DISABLED;
     WifiData->reqMode        = WIFIMODE_DISABLED;
-    WifiData->reqPacketFlags = WFLAG_PACKET_ALL & (~WFLAG_PACKET_BEACON);
+    WifiData->reqPacketFlags = (u32)WFLAG_PACKET_ALL & (~(u32)WFLAG_PACKET_BEACON);
     WifiData->curReqFlags    = 0;
     WifiData->reqReqFlags    = 0;
     WifiData->maxrate7       = 0x0A;
@@ -1179,7 +1181,7 @@ void Wifi_Init(u32 wifidata)
     Wifi_BBWrite(0x35, 0x1F);
 
     // Wifi_Shutdown();
-    WifiData->random ^= (W_RANDOM ^ (W_RANDOM << 11) ^ (W_RANDOM << 22));
+    WifiData->random ^= ((u32)W_RANDOM ^ ((u32)W_RANDOM << 11u) ^ ((u32)W_RANDOM << 22u));
 
     WifiData->flags7 |= WFLAG_ARM7_ACTIVE;
 }
